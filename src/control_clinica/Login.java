@@ -39,6 +39,8 @@ public class Login extends javax.swing.JFrame {
         txtPass = new control_clinica.PasswordField();
         panelRound3 = new control_clinica.PanelRound();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -74,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         txtPass.setLabelText("Contraseña");
         panelRound2.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 270, -1));
 
-        panelRound3.setBackground(new java.awt.Color(61, 30, 219));
+        panelRound3.setBackground(new java.awt.Color(61, 130, 219));
         panelRound3.setForeground(new java.awt.Color(255, 255, 255));
         panelRound3.setRoundBottomLeft(20);
         panelRound3.setRoundBottomRight(20);
@@ -93,6 +95,26 @@ public class Login extends javax.swing.JFrame {
         panelRound3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         panelRound2.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 100, 40));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(20, 36, 57));
+        jLabel7.setText("-");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        panelRound2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 10, 20));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(20, 36, 57));
+        jLabel8.setText("X");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         panelRound1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 380, 370));
 
@@ -132,6 +154,14 @@ public class Login extends javax.swing.JFrame {
         Container n1= new Container();
         n1.setVisible(true);
     }//GEN-LAST:event_panelRound3MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,6 +204,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound2;
     private control_clinica.PanelRound panelRound3;
