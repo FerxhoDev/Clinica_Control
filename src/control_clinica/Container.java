@@ -19,6 +19,7 @@ public class Container extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0,0,0,0));
         this.setLocationRelativeTo(null);
+        Panelpestañas.setSelectedIndex(5);
         Panelpestañas.setEnabledAt(1, false);
         Panelpestañas.setEnabledAt(2, false);
         Panelpestañas.setEnabledAt(3, false);
@@ -35,6 +36,7 @@ public class Container extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRound1 = new control_clinica.PanelRound();
+        pCabecera = new javax.swing.JPanel();
         Panelpestañas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -62,9 +64,16 @@ public class Container extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         panelRound2 = new control_clinica.PanelRound();
+        jLabel9 = new javax.swing.JLabel();
+        lblCitas = new javax.swing.JLabel();
+        lblInicio = new javax.swing.JLabel();
+        lblPacientes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -75,6 +84,21 @@ public class Container extends javax.swing.JFrame {
         panelRound1.setRoundTopLeft(50);
         panelRound1.setRoundTopRight(50);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pCabecera.setBackground(new java.awt.Color(237, 245, 255));
+
+        javax.swing.GroupLayout pCabeceraLayout = new javax.swing.GroupLayout(pCabecera);
+        pCabecera.setLayout(pCabeceraLayout);
+        pCabeceraLayout.setHorizontalGroup(
+            pCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        pCabeceraLayout.setVerticalGroup(
+            pCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        panelRound1.add(pCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 1000, 30));
 
         Panelpestañas.setBackground(new java.awt.Color(237, 245, 255));
 
@@ -92,7 +116,7 @@ public class Container extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(923, Short.MAX_VALUE)
+                .addContainerGap(913, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -107,6 +131,7 @@ public class Container extends javax.swing.JFrame {
         Panelpestañas.addTab("Doctor", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(237, 245, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Historial Clinico");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -114,23 +139,7 @@ public class Container extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(887, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(574, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
-        );
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 574, -1, -1));
 
         Panelpestañas.addTab("Paciente", jPanel2);
 
@@ -207,6 +216,7 @@ public class Container extends javax.swing.JFrame {
         Panelpestañas.addTab("Historia Clinica", jPanel3);
 
         jPanel5.setBackground(new java.awt.Color(237, 245, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setText("Tratamiento");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -214,27 +224,13 @@ public class Container extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(906, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(574, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addContainerGap())
-        );
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(896, 574, -1, -1));
+        jPanel5.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 63, 300, -1));
 
         Panelpestañas.addTab("Cita", jPanel5);
 
         jPanel4.setBackground(new java.awt.Color(237, 245, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton5.setText("Doctor");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -242,42 +238,76 @@ public class Container extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(935, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(574, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addContainerGap())
-        );
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(925, 574, -1, -1));
 
         Panelpestañas.addTab("Tratamiento", jPanel4);
 
-        panelRound1.add(Panelpestañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 9, 990, 630));
+        jPanel6.setBackground(new java.awt.Color(237, 245, 255));
+
+        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(61, 130, 219));
+        jLabel10.setText("INICIO");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(409, 409, 409)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(258, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLabel10)
+                .addContainerGap(474, Short.MAX_VALUE))
+        );
+
+        Panelpestañas.addTab("tab6", jPanel6);
+
+        panelRound1.add(Panelpestañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 9, 980, 630));
 
         panelRound2.setBackground(new java.awt.Color(61, 130, 219));
         panelRound2.setRoundBottomLeft(50);
         panelRound2.setRoundTopLeft(50);
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
-        );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
+        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Bienvenido!");
+        panelRound2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 130, -1));
+
+        lblCitas.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        lblCitas.setForeground(new java.awt.Color(255, 255, 255));
+        lblCitas.setText("Citas");
+        lblCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCitasMouseClicked(evt);
+            }
+        });
+        panelRound2.add(lblCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 130, -1));
+
+        lblInicio.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        lblInicio.setForeground(new java.awt.Color(24, 74, 127));
+        lblInicio.setText("Inicio");
+        lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblInicioMouseClicked(evt);
+            }
+        });
+        panelRound2.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 130, -1));
+
+        lblPacientes.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        lblPacientes.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes.setText("Pacientes");
+        lblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPacientesMouseClicked(evt);
+            }
+        });
+        panelRound2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 130, -1));
 
         panelRound1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 650));
 
@@ -303,7 +333,7 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Panelpestañas.setSelectedIndex(2);
+        Panelpestañas.setSelectedIndex(3);
         Panelpestañas.setEnabledAt(2, true);
         Panelpestañas.setEnabledAt(1, false);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -321,7 +351,7 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Panelpestañas.setSelectedIndex(3);
+        Panelpestañas.setSelectedIndex(2);
         Panelpestañas.setEnabledAt(3, true);
         Panelpestañas.setEnabledAt(2, false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -329,6 +359,27 @@ public class Container extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void lblCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCitasMouseClicked
+        Panelpestañas.setSelectedIndex(3);
+        lblPacientes.setForeground(Color.white);
+        lblInicio.setForeground(Color.white);
+        lblCitas.setForeground(new Color(24,74,127));
+    }//GEN-LAST:event_lblCitasMouseClicked
+
+    private void lblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientesMouseClicked
+        Panelpestañas.setSelectedIndex(1);
+        lblPacientes.setForeground(new Color(24,74,127));
+        lblInicio.setForeground(Color.white);
+        lblCitas.setForeground(Color.white);
+    }//GEN-LAST:event_lblPacientesMouseClicked
+
+    private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
+        Panelpestañas.setSelectedIndex(5);
+        lblPacientes.setForeground(Color.white);
+        lblInicio.setForeground(new Color(24,74,127));
+        lblCitas.setForeground(Color.white);
+    }//GEN-LAST:event_lblInicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -378,7 +429,9 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -386,15 +439,21 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblCitas;
+    private javax.swing.JLabel lblInicio;
+    private javax.swing.JLabel lblPacientes;
+    private javax.swing.JPanel pCabecera;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
