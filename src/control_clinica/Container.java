@@ -269,13 +269,14 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes2.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes2.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes2.setText("Pacientes");
         lblPacientes2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes2MouseClicked(evt);
             }
         });
-        panelRound4.add(lblPacientes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound4.add(lblPacientes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
 
         jPanel6.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 180, 80));
 
@@ -288,13 +289,14 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes3.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes3.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes3.setText("Pacientes");
         lblPacientes3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes3MouseClicked(evt);
             }
         });
-        panelRound5.add(lblPacientes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound5.add(lblPacientes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
 
         jPanel6.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 180, 80));
 
@@ -307,13 +309,14 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes4.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes4.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes4.setText("Pacientes");
         lblPacientes4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes4MouseClicked(evt);
             }
         });
-        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
 
         jPanel6.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 180, 80));
 
@@ -377,37 +380,40 @@ public class Container extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Bienvenido!");
-        panelRound2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 130, -1));
+        panelRound2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 140, -1));
 
         lblCitas.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblCitas.setForeground(new java.awt.Color(255, 255, 255));
+        lblCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Calendario-48.png"))); // NOI18N
         lblCitas.setText("Citas");
         lblCitas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCitasMouseClicked(evt);
             }
         });
-        panelRound2.add(lblCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 130, -1));
+        panelRound2.add(lblCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 130, -1));
 
         lblInicio.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblInicio.setForeground(new java.awt.Color(24, 74, 127));
+        lblInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Casa_48_Focus.png"))); // NOI18N
         lblInicio.setText("Inicio");
         lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblInicioMouseClicked(evt);
             }
         });
-        panelRound2.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 130, -1));
+        panelRound2.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 130, -1));
 
         lblPacientes.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes.setText("Pacientes");
         lblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientesMouseClicked(evt);
             }
         });
-        panelRound2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 130, -1));
+        panelRound2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 150, -1));
 
         panelRound1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 650));
 
