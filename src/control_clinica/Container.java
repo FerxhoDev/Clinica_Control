@@ -5,6 +5,7 @@
 package control_clinica;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -41,7 +42,6 @@ public class Container extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         Panelpestañas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -127,15 +127,6 @@ public class Container extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(237, 245, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("Paciente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(913, 574, -1, -1));
-
         Panelpestañas.addTab("Doctor", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(237, 245, 255));
@@ -261,6 +252,7 @@ public class Container extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRound4.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound4.setPreferredSize(new java.awt.Dimension(170, 70));
         panelRound4.setRoundBottomLeft(15);
         panelRound4.setRoundBottomRight(15);
         panelRound4.setRoundTopLeft(15);
@@ -269,15 +261,16 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes2.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes2.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes2.setText("Pacientes");
         lblPacientes2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes2MouseClicked(evt);
             }
         });
-        panelRound4.add(lblPacientes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound4.add(lblPacientes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 40));
 
-        jPanel6.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 180, 80));
+        jPanel6.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 200, 110));
 
         panelRound5.setBackground(new java.awt.Color(61, 130, 219));
         panelRound5.setRoundBottomLeft(15);
@@ -288,17 +281,19 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes3.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes3.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes3.setText("Pacientes");
         lblPacientes3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes3MouseClicked(evt);
             }
         });
-        panelRound5.add(lblPacientes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound5.add(lblPacientes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
 
-        jPanel6.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 180, 80));
+        jPanel6.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, 110));
 
         panelRound6.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound6.setPreferredSize(new java.awt.Dimension(170, 70));
         panelRound6.setRoundBottomLeft(15);
         panelRound6.setRoundBottomRight(15);
         panelRound6.setRoundTopLeft(15);
@@ -307,15 +302,16 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes4.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes4.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes4.setText("Pacientes");
         lblPacientes4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes4MouseClicked(evt);
             }
         });
-        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 40));
+        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, 40));
 
-        jPanel6.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 180, 80));
+        jPanel6.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 200, 110));
 
         panelRound3.setBackground(new java.awt.Color(61, 130, 219));
         panelRound3.setRoundTopLeft(10);
@@ -351,7 +347,7 @@ public class Container extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel6.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 260, 40));
+        jPanel6.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 260, 40));
 
         jList1.setBackground(new java.awt.Color(255, 255, 255));
         jList1.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
@@ -363,7 +359,7 @@ public class Container extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 260, 100));
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 260, 100));
 
         Panelpestañas.addTab("tab6", jPanel6);
 
@@ -381,33 +377,36 @@ public class Container extends javax.swing.JFrame {
 
         lblCitas.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblCitas.setForeground(new java.awt.Color(255, 255, 255));
+        lblCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Calendario-48.png"))); // NOI18N
         lblCitas.setText("Citas");
         lblCitas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCitasMouseClicked(evt);
             }
         });
-        panelRound2.add(lblCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 130, -1));
+        panelRound2.add(lblCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 130, -1));
 
         lblInicio.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblInicio.setForeground(new java.awt.Color(24, 74, 127));
+        lblInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Casa_48_Focus.png"))); // NOI18N
         lblInicio.setText("Inicio");
         lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblInicioMouseClicked(evt);
             }
         });
-        panelRound2.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 130, -1));
+        panelRound2.add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 130, -1));
 
         lblPacientes.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
         lblPacientes.setText("Pacientes");
         lblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientesMouseClicked(evt);
             }
         });
-        panelRound2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 130, -1));
+        panelRound2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, -1));
 
         panelRound1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 650));
 
@@ -425,12 +424,6 @@ public class Container extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Panelpestañas.setSelectedIndex(1);
-        Panelpestañas.setEnabledAt(1, true);
-        Panelpestañas.setEnabledAt(0, false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Panelpestañas.setSelectedIndex(3);
@@ -453,12 +446,23 @@ public class Container extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
-
+    
+    private ImageIcon CargarImg(String rut){
+        String ruta = rut;
+        ImageIcon icon = new ImageIcon (ruta);
+        return icon;
+    }
     private void lblCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCitasMouseClicked
         Panelpestañas.setSelectedIndex(3);
         lblPacientes.setForeground(Color.white);
         lblInicio.setForeground(Color.white);
         lblCitas.setForeground(new Color(24,74,127));
+        String inicio_F = "src/Media/Casa_48.png";     
+        String Paciente = "src/Media/Pacientes_50.png";
+        String Cita = "src/Media/Calendario-48_Focus.png";
+        lblInicio.setIcon(CargarImg(inicio_F));
+        lblPacientes.setIcon(CargarImg(Paciente));
+        lblCitas.setIcon(CargarImg(Cita));
     }//GEN-LAST:event_lblCitasMouseClicked
 
     private void lblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientesMouseClicked
@@ -466,6 +470,12 @@ public class Container extends javax.swing.JFrame {
         lblPacientes.setForeground(new Color(24,74,127));
         lblInicio.setForeground(Color.white);
         lblCitas.setForeground(Color.white);
+        String inicio = "src/Media/Casa_48.png";     
+        String Paciente_F = "src/Media/Pacientes_50_Focus.png";
+        String Cita = "src/Media/Calendario-48.png";
+        lblInicio.setIcon(CargarImg(inicio));
+        lblPacientes.setIcon(CargarImg(Paciente_F));
+        lblCitas.setIcon(CargarImg(Cita));
     }//GEN-LAST:event_lblPacientesMouseClicked
 
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
@@ -473,6 +483,12 @@ public class Container extends javax.swing.JFrame {
         lblPacientes.setForeground(Color.white);
         lblInicio.setForeground(new Color(24,74,127));
         lblCitas.setForeground(Color.white);
+        String inicio_F = "src/Media/Casa_48_Focus.png";     
+        String Paciente = "src/Media/Pacientes_50.png";
+        String Cita = "src/Media/Calendario-48.png";
+        lblInicio.setIcon(CargarImg(inicio_F));
+        lblPacientes.setIcon(CargarImg(Paciente));
+        lblCitas.setIcon(CargarImg(Cita));
     }//GEN-LAST:event_lblInicioMouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -536,7 +552,6 @@ public class Container extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Panelpestañas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
