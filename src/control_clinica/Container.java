@@ -147,7 +147,7 @@ public class Container extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(61, 130, 219));
         jLabel10.setText("Pacientes");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 130, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 130, -1));
 
         panelRound7.setBackground(new java.awt.Color(20, 36, 57));
         panelRound7.setRoundBottomLeft(40);
