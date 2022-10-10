@@ -44,18 +44,10 @@ public class Container extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        panelRound7 = new control_clinica.PanelRound();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        panelRound8 = new control_clinica.PanelRound();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        panelRound7 = new control_clinica.PanelRound();
+        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -149,80 +141,6 @@ public class Container extends javax.swing.JFrame {
         jLabel10.setText("Pacientes");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 130, -1));
 
-        panelRound7.setBackground(new java.awt.Color(20, 36, 57));
-        panelRound7.setRoundBottomLeft(40);
-        panelRound7.setRoundBottomRight(40);
-        panelRound7.setRoundTopLeft(40);
-        panelRound7.setRoundTopRight(40);
-        panelRound7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel15.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("INGRESAR UN PACIENTE");
-        panelRound7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 20));
-
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 400, -1));
-
-        jLabel16.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Dirección");
-        panelRound7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 70, -1));
-
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound7.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 180, -1));
-
-        jLabel18.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Teléfono");
-        panelRound7.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 70, -1));
-
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        panelRound7.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 180, -1));
-
-        panelRound8.setBackground(new java.awt.Color(237, 245, 255));
-        panelRound8.setRoundBottomLeft(20);
-        panelRound8.setRoundBottomRight(20);
-        panelRound8.setRoundTopLeft(20);
-        panelRound8.setRoundTopRight(20);
-
-        jLabel19.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(20, 36, 57));
-        jLabel19.setText("Ingresar");
-
-        javax.swing.GroupLayout panelRound8Layout = new javax.swing.GroupLayout(panelRound8);
-        panelRound8.setLayout(panelRound8Layout);
-        panelRound8Layout.setHorizontalGroup(
-            panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-            .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelRound8Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        panelRound8Layout.setVerticalGroup(
-            panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(panelRound8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelRound8Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel19)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        panelRound7.add(panelRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 120, 40));
-
-        jLabel17.setFont(new java.awt.Font("Dubai Medium", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Nombre");
-        panelRound7.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 48, -1));
-
-        jPanel2.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 490, 250));
-
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -249,6 +167,25 @@ public class Container extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 920, 220));
+
+        panelRound7.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound7.setRoundBottomLeft(20);
+        panelRound7.setRoundBottomRight(20);
+        panelRound7.setRoundTopLeft(20);
+        panelRound7.setRoundTopRight(20);
+        panelRound7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound7MouseClicked(evt);
+            }
+        });
+        panelRound7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("+ Agregar paciente");
+        panelRound7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
+
+        jPanel2.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 90));
 
         Panelpestañas.addTab("Paciente", jPanel2);
 
@@ -562,12 +499,12 @@ public class Container extends javax.swing.JFrame {
         lblPacientes.setForeground(Color.white);
         lblInicio.setForeground(Color.white);
         lblCitas.setForeground(new Color(24,74,127));
-        String inicio_F = "src/Media/Casa_48.png";     
+        String inicio = "src/Media/Casa_48.png";     
         String Paciente = "src/Media/Pacientes_50.png";
-        String Cita = "src/Media/Calendario-48_Focus.png";
-        lblInicio.setIcon(CargarImg(inicio_F));
+        String Cita_F = "src/Media/Calendario-48_Focus.png";
+        lblInicio.setIcon(CargarImg(inicio));
         lblPacientes.setIcon(CargarImg(Paciente));
-        lblCitas.setIcon(CargarImg(Cita));
+        lblCitas.setIcon(CargarImg(Cita_F));
     }//GEN-LAST:event_lblCitasMouseClicked
 
     private void lblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientesMouseClicked
@@ -619,6 +556,11 @@ public class Container extends javax.swing.JFrame {
     private void lblPacientes5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientes5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblPacientes5MouseClicked
+
+    private void panelRound7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound7MouseClicked
+        Add_User add1 = new Add_User();
+        add1.setVisible(true);
+    }//GEN-LAST:event_panelRound7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -673,10 +615,6 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -700,9 +638,6 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblCitas;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblPacientes;
@@ -718,6 +653,5 @@ public class Container extends javax.swing.JFrame {
     private control_clinica.PanelRound panelRound5;
     private control_clinica.PanelRound panelRound6;
     private control_clinica.PanelRound panelRound7;
-    private control_clinica.PanelRound panelRound8;
     // End of variables declaration//GEN-END:variables
 }
