@@ -73,6 +73,8 @@ public class Container extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        panelRound8 = new control_clinica.PanelRound();
+        jLabel16 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -265,7 +267,7 @@ public class Container extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDateChooser1.setDateFormatString("d/MM/y HH:MM:SS");
-        jPanel5.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 300, 30));
+        jPanel5.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 300, 30));
 
         jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(61, 130, 219));
@@ -275,11 +277,30 @@ public class Container extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(48, 88, 145));
         jLabel12.setText("Nombre");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel5.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 340, 30));
+        jPanel5.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 340, 30));
+
+        panelRound8.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound8.setRoundBottomLeft(20);
+        panelRound8.setRoundBottomRight(20);
+        panelRound8.setRoundTopLeft(20);
+        panelRound8.setRoundTopRight(20);
+        panelRound8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound8MouseClicked(evt);
+            }
+        });
+        panelRound8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Buscar paciente");
+        panelRound8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
+
+        jPanel5.add(panelRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 90));
 
         Panelpestañas.addTab("Cita", jPanel5);
 
@@ -562,6 +583,11 @@ public class Container extends javax.swing.JFrame {
         add1.setVisible(true);
     }//GEN-LAST:event_panelRound7MouseClicked
 
+    private void panelRound8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound8MouseClicked
+        Paciente pa1 = new Paciente();
+        pa1.setVisible(true);
+    }//GEN-LAST:event_panelRound8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -615,6 +641,7 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -653,5 +680,6 @@ public class Container extends javax.swing.JFrame {
     private control_clinica.PanelRound panelRound5;
     private control_clinica.PanelRound panelRound6;
     private control_clinica.PanelRound panelRound7;
+    private control_clinica.PanelRound panelRound8;
     // End of variables declaration//GEN-END:variables
 }
