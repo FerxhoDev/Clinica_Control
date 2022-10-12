@@ -112,7 +112,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Container class="control_clinica.PanelRound" name="panelRound3">
+            <Container class="control_clinica.PanelRound" name="btnIngresar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="db" green="82" red="3d" type="rgb"/>
@@ -126,7 +126,7 @@
                 <Property name="roundTopRight" type="int" value="20"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelRound3MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnIngresarMouseClicked"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
