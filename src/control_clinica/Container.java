@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +34,20 @@ public class Container extends javax.swing.JFrame {
         Panelpestañas.setEnabledAt(2, false);
         Panelpestañas.setEnabledAt(3, false);
         Panelpestañas.setEnabledAt(4, false);
+        // inicio con lista de doctor___es
+        
+        DefaultListModel md = new DefaultListModel();
+        
+        ResultSet rs = listdoc("select Nombre from doctor");
+        
+        try{
+            while(rs.next()){
+                md.addElement(rs.getString("Nombre"));
+                listDoc.setModel(md);
+            }           
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en el modelado");
+        }
     }
     
     public Connection conectar(){
@@ -57,11 +72,28 @@ public class Container extends javax.swing.JFrame {
             pst = cn.prepareStatement(consulta);
             rs = pst.executeQuery();      
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, contacte con el Administrador :)");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, con la consulta :)");
         }
         return rs;
     }
     
+    public ResultSet listdoc (String consultaD){
+        
+        Connection cn = null;
+        Statement sql;
+        ResultSet rs = rs = null;
+        PreparedStatement pst = null;
+        
+        try{
+            cn = conectar();
+            pst = cn.prepareStatement(consultaD);
+            rs = pst.executeQuery();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error en listar Doctores, contacte con el Administrador :)");
+        }
+        return rs;
+    }
    /* public void mostrar(String tabla){
         String sql = "select from " + tabla;
         Statement st;
@@ -98,11 +130,14 @@ public class Container extends javax.swing.JFrame {
         Panelpestañas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tpacientes = new javax.swing.JTable();
         panelRound7 = new control_clinica.PanelRound();
         jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        panelRound10 = new control_clinica.PanelRound();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -142,7 +177,7 @@ public class Container extends javax.swing.JFrame {
         panelRound3 = new control_clinica.PanelRound();
         lblPacientes5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listDoc = new javax.swing.JList<>();
         panelRound2 = new control_clinica.PanelRound();
         jLabel9 = new javax.swing.JLabel();
         lblCitas = new javax.swing.JLabel();
@@ -193,11 +228,6 @@ public class Container extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(237, 245, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(61, 130, 219));
-        jLabel10.setText("Pacientes");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 130, -1));
-
         Tpacientes.setBackground(new java.awt.Color(255, 255, 255));
         Tpacientes.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
         Tpacientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -239,10 +269,37 @@ public class Container extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("+ Agregar paciente");
-        panelRound7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
+        jLabel15.setText("Buscar");
+        panelRound7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 50, -1));
 
-        jPanel2.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 90));
+        jPanel2.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 170, 60));
+
+        jLabel17.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(61, 130, 219));
+        jLabel17.setText("Pacientes");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 130, -1));
+
+        panelRound10.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound10.setRoundBottomLeft(20);
+        panelRound10.setRoundBottomRight(20);
+        panelRound10.setRoundTopLeft(20);
+        panelRound10.setRoundTopRight(20);
+        panelRound10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound10MouseClicked(evt);
+            }
+        });
+        panelRound10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("+ Agregar paciente");
+        panelRound10.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, -1));
+
+        jPanel2.add(panelRound10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 170, 60));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Doc_100.png"))); // NOI18N
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         Panelpestañas.addTab("Paciente", jPanel2);
 
@@ -473,15 +530,15 @@ public class Container extends javax.swing.JFrame {
 
         jPanel6.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 260, 40));
 
-        jList1.setBackground(new java.awt.Color(255, 255, 255));
-        jList1.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
-        jList1.setForeground(new java.awt.Color(0, 0, 0));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listDoc.setBackground(new java.awt.Color(255, 255, 255));
+        listDoc.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        listDoc.setForeground(new java.awt.Color(0, 0, 0));
+        listDoc.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Mario Borralles", "Alejando Gallo " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listDoc);
 
         jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 260, 100));
 
@@ -656,14 +713,18 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPacientes5MouseClicked
 
     private void panelRound7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound7MouseClicked
-        Add_User add1 = new Add_User();
-        add1.setVisible(true);
+        Paciente vista = new Paciente();
+        vista.setVisible(true);
     }//GEN-LAST:event_panelRound7MouseClicked
 
     private void panelRound8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound8MouseClicked
         Paciente pa1 = new Paciente();
         pa1.setVisible(true);
     }//GEN-LAST:event_panelRound8MouseClicked
+
+    private void panelRound10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelRound10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -713,14 +774,16 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox6;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -728,7 +791,6 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -749,8 +811,10 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel lblPacientes3;
     private javax.swing.JLabel lblPacientes4;
     private javax.swing.JLabel lblPacientes5;
+    private javax.swing.JList<String> listDoc;
     private javax.swing.JPanel pCabecera;
     private control_clinica.PanelRound panelRound1;
+    private control_clinica.PanelRound panelRound10;
     private control_clinica.PanelRound panelRound2;
     private control_clinica.PanelRound panelRound3;
     private control_clinica.PanelRound panelRound4;

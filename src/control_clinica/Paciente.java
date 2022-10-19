@@ -4,7 +4,15 @@
  */
 package control_clinica;
 
+import com.mysql.cj.xdevapi.Statement;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,7 +27,36 @@ public class Paciente extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0,0,0,0));
         this.setLocationRelativeTo(null);
+        txtNombre.requestFocus();
     }
+    
+    public Connection conectar(){
+    
+        Connection con = null;
+        try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/control_clinica","root","Emperador5732");
+        }catch (SQLException e){
+            System.err.print(e.toString());
+            JOptionPane.showMessageDialog(this, "Ocurrió un error con la conexion a DB");
+        }
+        return con;                                                                                                                                            
+    }
+    
+    public ResultSet listartab (String consulta){
+        Connection cn = null;
+        Statement sql;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try{
+            cn = conectar();
+            pst = cn.prepareStatement(consulta);
+            rs = pst.executeQuery();      
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, con la consulta :)" +e.toString());
+        }
+        return rs;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,13 +69,26 @@ public class Paciente extends javax.swing.JFrame {
 
         panelRound1 = new control_clinica.PanelRound();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         panelRound2 = new control_clinica.PanelRound();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         panelRound3 = new control_clinica.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbPaciente = new javax.swing.JTable();
+        panelRound4 = new control_clinica.PanelRound();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelRound5 = new control_clinica.PanelRound();
+        jLabel7 = new javax.swing.JLabel();
+        panelRound6 = new control_clinica.PanelRound();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -56,8 +106,8 @@ public class Paciente extends javax.swing.JFrame {
         jLabel1.setText("BUSCAR PACIENTE");
         panelRound1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 165, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 300, -1));
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 300, -1));
 
         jLabel3.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,6 +119,11 @@ public class Paciente extends javax.swing.JFrame {
         panelRound2.setRoundBottomRight(10);
         panelRound2.setRoundTopLeft(10);
         panelRound2.setRoundTopRight(10);
+        panelRound2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound2MouseClicked(evt);
+            }
+        });
         panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
@@ -78,50 +133,186 @@ public class Paciente extends javax.swing.JFrame {
 
         panelRound1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 90, 40));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Nombre"
-            }
-        ));
-        jTable1.setGridColor(new java.awt.Color(61, 130, 219));
-        jScrollPane1.setViewportView(jTable1);
-
-        panelRound1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 310, 80));
-
         panelRound3.setBackground(new java.awt.Color(237, 245, 255));
         panelRound3.setToolTipText("");
         panelRound3.setRoundBottomLeft(20);
         panelRound3.setRoundBottomRight(20);
         panelRound3.setRoundTopLeft(20);
         panelRound3.setRoundTopRight(20);
+        panelRound3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
-        panelRound3.setLayout(panelRound3Layout);
-        panelRound3Layout.setHorizontalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        tbPaciente.setBackground(new java.awt.Color(255, 255, 255));
+        tbPaciente.setForeground(new java.awt.Color(0, 0, 0));
+        tbPaciente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "id", "Nombre", "Dirección", "Teléfono"
+            }
+        ));
+        tbPaciente.setGridColor(new java.awt.Color(61, 130, 219));
+        jScrollPane1.setViewportView(tbPaciente);
+
+        panelRound3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 472, 100));
+
+        panelRound1.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 530, 220));
+
+        panelRound4.setBackground(new java.awt.Color(237, 245, 255));
+        panelRound4.setRoundBottomLeft(30);
+        panelRound4.setRoundBottomRight(30);
+        panelRound4.setRoundTopLeft(30);
+        panelRound4.setRoundTopRight(30);
+        panelRound4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 206, 32));
+        panelRound4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 260, 32));
+        panelRound4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 206, 32));
+
+        jLabel2.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(61, 130, 219));
+        jLabel2.setText("Nombre");
+        panelRound4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(61, 130, 219));
+        jLabel5.setText("Dirección");
+        panelRound4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(61, 130, 219));
+        jLabel6.setText("Teléfono");
+        panelRound4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+
+        panelRound5.setBackground(new java.awt.Color(20, 36, 57));
+        panelRound5.setRoundBottomLeft(10);
+        panelRound5.setRoundBottomRight(10);
+        panelRound5.setRoundTopLeft(10);
+        panelRound5.setRoundTopRight(10);
+
+        jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Actualizar");
+
+        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
+        panelRound5.setLayout(panelRound5Layout);
+        panelRound5Layout.setHorizontalGroup(
+            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        panelRound3Layout.setVerticalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+        panelRound5Layout.setVerticalGroup(
+            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelRound1.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 780, 290));
+        panelRound4.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 100, 30));
 
-        getContentPane().add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        panelRound6.setBackground(new java.awt.Color(20, 36, 57));
+        panelRound6.setRoundBottomLeft(10);
+        panelRound6.setRoundBottomRight(10);
+        panelRound6.setRoundTopLeft(10);
+        panelRound6.setRoundTopRight(10);
+
+        jLabel8.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Eliminar");
+
+        javax.swing.GroupLayout panelRound6Layout = new javax.swing.GroupLayout(panelRound6);
+        panelRound6.setLayout(panelRound6Layout);
+        panelRound6Layout.setHorizontalGroup(
+            panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel8)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelRound6Layout.setVerticalGroup(
+            panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(panelRound6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound6Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel8)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelRound4.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+
+        panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 400, 390));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(20, 36, 57));
+        jLabel13.setText("X");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        panelRound1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(20, 36, 57));
+        jLabel14.setText("-");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        panelRound1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 10, 20));
+
+        getContentPane().add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panelRound2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound2MouseClicked
+        DefaultTableModel md = new DefaultTableModel();
+        md.addColumn("id");
+        md.addColumn("Nombre");
+        md.addColumn("Dirección");
+        md.addColumn("Teléfono");
+        tbPaciente.setModel(md);
+        String nom = txtNombre.getText();
+        ResultSet rs = listartab("select * from paciente where Nombre like '%"+nom+"%'");
+        
+        md.setColumnIdentifiers(new Object[]{"id", "Nombre", "Dirección", "Teléfono"});
+        
+        try{
+            while(rs.next()){
+                md.addRow(new Object[] {rs.getInt("ID_paciente"), rs.getString("Nombre"), rs.getString("Direccion"), rs.getString("Telefono")}); 
+                tbPaciente.setModel(md);
+            }           
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se encontraron coincidencias");
+        }
+    }//GEN-LAST:event_panelRound2MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,13 +351,26 @@ public class Paciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound2;
     private control_clinica.PanelRound panelRound3;
+    private control_clinica.PanelRound panelRound4;
+    private control_clinica.PanelRound panelRound5;
+    private control_clinica.PanelRound panelRound6;
+    private javax.swing.JTable tbPaciente;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
