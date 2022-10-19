@@ -5,7 +5,9 @@
 package control_clinica;
 
 import com.mysql.cj.xdevapi.Statement;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,8 +15,15 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -48,6 +57,8 @@ public class Container extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en el modelado");
         }
+        
+        cchart();
     }
     
     public Connection conectar(){
@@ -93,6 +104,68 @@ public class Container extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ocurrio un error en listar Doctores, contacte con el Administrador :)");
         }
         return rs;
+    }
+    
+    public ResultSet count (String consulta){
+        Connection cn = null;
+        Statement sql;
+        ResultSet rs = rs = null;
+        PreparedStatement pst = null;
+        
+        try{
+            cn = conectar();
+            pst = cn.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error en el conte, contacte con el Administrador :)");
+        }
+        return rs;
+    }
+    public void cchart(){
+        int paciente = 0;
+        int citas = 0;
+        DefaultCategoryDataset data = new DefaultCategoryDataset();
+        ResultSet rspaciente = count("select count(ID_paciente)from paciente ");
+        ResultSet rscitas = count ("select count(ID_cita) from cita");
+        
+        try {
+            while(rspaciente.next()){
+                paciente = rspaciente.getInt("count(ID_paciente)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while(rscitas.next()){
+                citas = rscitas.getInt("count(ID_cita)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        data.setValue(paciente,"Pacientes", "");
+        data.setValue(citas,"Citas", "");
+        JFreeChart Firstchart = ChartFactory.createBarChart3D(
+            "DasBoard",
+            "",
+            "Cantidad",
+            data,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        );
+        
+        ChartPanel panel = new ChartPanel(Firstchart);
+        panel.setMouseWheelEnabled(true);
+        panel.setPreferredSize(new Dimension(400,200));
+        
+        panChart.setLayout(new BorderLayout());
+        panChart.add(panel,BorderLayout.CENTER);
+        pack();
+        repaint();
     }
    /* public void mostrar(String tabla){
         String sql = "select from " + tabla;
@@ -178,6 +251,7 @@ public class Container extends javax.swing.JFrame {
         lblPacientes5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listDoc = new javax.swing.JList<>();
+        panChart = new control_clinica.PanelRound();
         panelRound2 = new control_clinica.PanelRound();
         jLabel9 = new javax.swing.JLabel();
         lblCitas = new javax.swing.JLabel();
@@ -528,7 +602,7 @@ public class Container extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel6.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 260, 40));
+        jPanel6.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 260, 40));
 
         listDoc.setBackground(new java.awt.Color(255, 255, 255));
         listDoc.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
@@ -540,7 +614,22 @@ public class Container extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listDoc);
 
-        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 260, 100));
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 260, 100));
+
+        panChart.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panChartLayout = new javax.swing.GroupLayout(panChart);
+        panChart.setLayout(panChartLayout);
+        panChartLayout.setHorizontalGroup(
+            panChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        panChartLayout.setVerticalGroup(
+            panChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+
+        jPanel6.add(panChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 600, 350));
 
         Panelpestañas.addTab("tab6", jPanel6);
 
@@ -813,6 +902,7 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JLabel lblPacientes5;
     private javax.swing.JList<String> listDoc;
     private javax.swing.JPanel pCabecera;
+    private control_clinica.PanelRound panChart;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound10;
     private control_clinica.PanelRound panelRound2;
