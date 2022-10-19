@@ -59,6 +59,7 @@ public class Container extends javax.swing.JFrame {
         }
         
         cchart();
+        paintDashBoard();
     }
     
     public Connection conectar(){
@@ -121,6 +122,31 @@ public class Container extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ocurrio un error en el conte, contacte con el Administrador :)");
         }
         return rs;
+    }
+    public void paintDashBoard(){
+        String cont = "";
+        String cont2 = "";
+        
+        ResultSet rspaciente = count("select count(ID_paciente)from paciente ");
+        ResultSet rscitas = count("select count(ID_cita)from cita ");
+        //recorre Query y convierte a String el ResultSet
+        try {
+            while(rspaciente.next()){
+                cont = rspaciente.getString("count(ID_paciente)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            while(rscitas.next()){
+                cont2 = rscitas.getString("count(ID_cita)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lblPacient.setText(cont);
+        lblCita.setText(cont2);
     }
     public void cchart(){
         int paciente = 0;
@@ -244,9 +270,11 @@ public class Container extends javax.swing.JFrame {
         panelRound4 = new control_clinica.PanelRound();
         lblPacientes2 = new javax.swing.JLabel();
         panelRound5 = new control_clinica.PanelRound();
-        lblPacientes3 = new javax.swing.JLabel();
+        LBL = new javax.swing.JLabel();
+        lblPacient = new javax.swing.JLabel();
         panelRound6 = new control_clinica.PanelRound();
         lblPacientes4 = new javax.swing.JLabel();
+        lblCita = new javax.swing.JLabel();
         panelRound3 = new control_clinica.PanelRound();
         lblPacientes5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -534,16 +562,21 @@ public class Container extends javax.swing.JFrame {
         panelRound5.setRoundTopRight(15);
         panelRound5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPacientes3.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
-        lblPacientes3.setForeground(new java.awt.Color(255, 255, 255));
-        lblPacientes3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
-        lblPacientes3.setText("Pacientes");
-        lblPacientes3.addMouseListener(new java.awt.event.MouseAdapter() {
+        LBL.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        LBL.setForeground(new java.awt.Color(255, 255, 255));
+        LBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
+        LBL.setText("Pacientes");
+        LBL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblPacientes3MouseClicked(evt);
+                LBLMouseClicked(evt);
             }
         });
-        panelRound5.add(lblPacientes3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
+        panelRound5.add(LBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
+
+        lblPacient.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        lblPacient.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacient.setText("1");
+        panelRound5.add(lblPacient, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         jPanel6.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, 110));
 
@@ -557,14 +590,19 @@ public class Container extends javax.swing.JFrame {
 
         lblPacientes4.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
         lblPacientes4.setForeground(new java.awt.Color(255, 255, 255));
-        lblPacientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Pacientes_50.png"))); // NOI18N
-        lblPacientes4.setText("Pacientes");
+        lblPacientes4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Media/Calendario-48.png"))); // NOI18N
+        lblPacientes4.setText("Citas");
         lblPacientes4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPacientes4MouseClicked(evt);
             }
         });
-        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, 40));
+        panelRound6.add(lblPacientes4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, 40));
+
+        lblCita.setFont(new java.awt.Font("Dubai Medium", 1, 18)); // NOI18N
+        lblCita.setForeground(new java.awt.Color(255, 255, 255));
+        lblCita.setText("1");
+        panelRound6.add(lblCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         jPanel6.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 200, 110));
 
@@ -789,9 +827,9 @@ public class Container extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblPacientes2MouseClicked
 
-    private void lblPacientes3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientes3MouseClicked
+    private void LBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBLMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblPacientes3MouseClicked
+    }//GEN-LAST:event_LBLMouseClicked
 
     private void lblPacientes4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientes4MouseClicked
         // TODO add your handling code here:
@@ -851,6 +889,7 @@ public class Container extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBL;
     private javax.swing.JTabbedPane Panelpestañas;
     private javax.swing.JTable Tpacientes;
     private javax.swing.JButton jButton3;
@@ -893,11 +932,12 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel lblCita;
     private javax.swing.JLabel lblCitas;
     private javax.swing.JLabel lblInicio;
+    private javax.swing.JLabel lblPacient;
     private javax.swing.JLabel lblPacientes;
     private javax.swing.JLabel lblPacientes2;
-    private javax.swing.JLabel lblPacientes3;
     private javax.swing.JLabel lblPacientes4;
     private javax.swing.JLabel lblPacientes5;
     private javax.swing.JList<String> listDoc;

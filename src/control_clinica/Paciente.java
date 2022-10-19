@@ -6,6 +6,7 @@ package control_clinica;
 
 import com.mysql.cj.xdevapi.Statement;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -57,7 +58,9 @@ public class Paciente extends javax.swing.JFrame {
         return rs;
     }
     
-
+    public void mousePressed(MouseEvent Mouse_evt){
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -285,6 +288,7 @@ public class Paciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void panelRound2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound2MouseClicked
+        int c = 0;
         DefaultTableModel md = new DefaultTableModel();
         md.addColumn("id");
         md.addColumn("Nombre");
@@ -295,12 +299,16 @@ public class Paciente extends javax.swing.JFrame {
         ResultSet rs = listartab("select * from paciente where Nombre like '%"+nom+"%'");
         
         md.setColumnIdentifiers(new Object[]{"id", "Nombre", "Dirección", "Teléfono"});
-        
+           
         try{
             while(rs.next()){
                 md.addRow(new Object[] {rs.getInt("ID_paciente"), rs.getString("Nombre"), rs.getString("Direccion"), rs.getString("Telefono")}); 
                 tbPaciente.setModel(md);
-            }           
+                c = c+1;
+            }          
+            if(c<1){
+                JOptionPane.showMessageDialog(null, "No se encontraron coincidencias");
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se encontraron coincidencias");
         }
