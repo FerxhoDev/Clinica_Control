@@ -850,7 +850,8 @@ public class Container extends javax.swing.JFrame {
     }//GEN-LAST:event_panelRound8MouseClicked
 
     private void panelRound10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound10MouseClicked
-        // TODO add your handling code here:
+        Add_User showAdd = new Add_User();
+        showAdd.setVisible(true);
     }//GEN-LAST:event_panelRound10MouseClicked
 
     /**
