@@ -353,9 +353,17 @@ public class Paciente extends javax.swing.JFrame {
 
     private void panelRound6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound6MouseClicked
          String id = tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 0).toString();
+         String [] botones = {"Si", "No"};
          
-         consulta("delete from paciente where ID_paciente = "+id+"");
+         int op = JOptionPane.showOptionDialog(this, "Quieres eliminar el registro?","",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,botones, botones[0]);
          
+         if (op == 0) {
+            consulta("delete from paciente where ID_paciente = "+id+"");       
+            JOptionPane.showMessageDialog(null, "Paciente Eliminado");    
+         }else if (op == 1){
+             JOptionPane.showMessageDialog(null, "No se realizaron cambios");    
+         }
+                
     }//GEN-LAST:event_panelRound6MouseClicked
 
     /**
