@@ -512,9 +512,9 @@ public class Container extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Buscar paciente");
-        panelRound8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
+        panelRound8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
-        jPanel5.add(panelRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 90));
+        jPanel5.add(panelRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 70));
 
         Panelpestañas.addTab("Cita", jPanel5);
 
