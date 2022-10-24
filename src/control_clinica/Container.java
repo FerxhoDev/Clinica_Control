@@ -128,7 +128,7 @@ public class Container extends javax.swing.JFrame {
         String cont2 = "";
         
         ResultSet rspaciente = count("select count(ID_paciente)from paciente ");
-        ResultSet rscitas = count("select count(ID_cita)from cita ");
+        ResultSet rscitas = count("select count(id)from cita ");
         //recorre Query y convierte a String el ResultSet
         try {
             while(rspaciente.next()){
@@ -140,7 +140,7 @@ public class Container extends javax.swing.JFrame {
         
         try {
             while(rscitas.next()){
-                cont2 = rscitas.getString("count(ID_cita)");
+                cont2 = rscitas.getString("count(id)");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,7 +153,7 @@ public class Container extends javax.swing.JFrame {
         int citas = 0;
         DefaultCategoryDataset data = new DefaultCategoryDataset();
         ResultSet rspaciente = count("select count(ID_paciente)from paciente ");
-        ResultSet rscitas = count ("select count(ID_cita) from cita");
+        ResultSet rscitas = count ("select count(id) from cita");
         
         try {
             while(rspaciente.next()){
@@ -164,7 +164,7 @@ public class Container extends javax.swing.JFrame {
         }
         try {
             while(rscitas.next()){
-                citas = rscitas.getInt("count(ID_cita)");
+                citas = rscitas.getInt("count(id)");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Container.class.getName()).log(Level.SEVERE, null, ex);
@@ -258,12 +258,11 @@ public class Container extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         panelRound8 = new control_clinica.PanelRound();
         jLabel16 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbcitas = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -480,22 +479,10 @@ public class Container extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(237, 245, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jDateChooser1.setDateFormatString("d/MM/y HH:MM:SS");
-        jPanel5.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 300, 30));
-
         jLabel11.setFont(new java.awt.Font("Dubai Medium", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(61, 130, 219));
-        jLabel11.setText("AGENDAR UNA CITA");
+        jLabel11.setText("CITAS AGENDADAS");
         jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(48, 88, 145));
-        jLabel12.setText("Nombre");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel5.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 340, 30));
 
         panelRound8.setBackground(new java.awt.Color(61, 130, 219));
         panelRound8.setRoundBottomLeft(20);
@@ -515,6 +502,21 @@ public class Container extends javax.swing.JFrame {
         panelRound8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 110, -1));
 
         jPanel5.add(panelRound8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, 70));
+
+        tbcitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nombre", "Fecha", "Hora"
+            }
+        ));
+        jScrollPane3.setViewportView(tbcitas);
+
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 840, 220));
 
         Panelpestañas.addTab("Cita", jPanel5);
 
@@ -765,6 +767,28 @@ public class Container extends javax.swing.JFrame {
         lblInicio.setIcon(CargarImg(inicio));
         lblPacientes.setIcon(CargarImg(Paciente));
         lblCitas.setIcon(CargarImg(Cita_F));
+        
+        // build tbCitas
+        
+        DefaultTableModel md = new DefaultTableModel();
+        md.addColumn("id");
+        md.addColumn("Nombre");
+        md.addColumn("Dirección");
+        md.addColumn("Teléfono");
+        tbcitas.setModel(md);
+        
+        ResultSet rs = listartab("SELECT c.motivo, c.fecha, c.hora, p.Nombre FROM cita c LEFT JOIN paciente p ON c.paciente_id = p.ID_paciente;");
+        
+        md.setColumnIdentifiers(new Object[]{"Motivo", "Nombre", "Fecha", "Hora"});
+        
+        try{
+            while(rs.next()){
+                md.addRow(new Object[] {rs.getString("motivo"), rs.getString("Nombre"), rs.getString("fecha"), rs.getString("hora"), }); 
+                tbcitas.setModel(md);
+            }           
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado en el modelado citas");
+        }
     }//GEN-LAST:event_lblCitasMouseClicked
 
     private void lblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPacientesMouseClicked
@@ -901,10 +925,8 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -928,11 +950,11 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblCita;
     private javax.swing.JLabel lblCitas;
     private javax.swing.JLabel lblInicio;
@@ -953,5 +975,6 @@ public class Container extends javax.swing.JFrame {
     private control_clinica.PanelRound panelRound6;
     private control_clinica.PanelRound panelRound7;
     private control_clinica.PanelRound panelRound8;
+    private javax.swing.JTable tbcitas;
     // End of variables declaration//GEN-END:variables
 }

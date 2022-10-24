@@ -39,6 +39,8 @@ public class Paciente extends javax.swing.JFrame {
         JTable table = (JTable) Mouse_evt.getSource();
         Point point = Mouse_evt.getPoint();
         int row = table.rowAtPoint(point);
+        // variable ID
+        String idp = tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 0).toString();
         if(Mouse_evt.getClickCount() == 1){
             txtNom.setText(tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 1).toString());
             txtDireccion.setText(tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 2).toString());
@@ -46,10 +48,9 @@ public class Paciente extends javax.swing.JFrame {
         }
         
     }            
-        });
-        
-        
+        });     
     }
+
     
     public Connection conectar(){
     
@@ -114,6 +115,8 @@ public class Paciente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         panelRound6 = new control_clinica.PanelRound();
         jLabel8 = new javax.swing.JLabel();
+        panelRound7 = new control_clinica.PanelRound();
+        jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
 
@@ -222,10 +225,20 @@ public class Paciente extends javax.swing.JFrame {
         panelRound5.setRoundBottomRight(10);
         panelRound5.setRoundTopLeft(10);
         panelRound5.setRoundTopRight(10);
+        panelRound5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound5MouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Actualizar");
+        jLabel7.setText("+ Agregar cita");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
         panelRound5.setLayout(panelRound5Layout);
@@ -248,7 +261,7 @@ public class Paciente extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelRound4.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 100, 30));
+        panelRound4.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 100, 30));
 
         panelRound6.setBackground(new java.awt.Color(20, 36, 57));
         panelRound6.setRoundBottomLeft(10);
@@ -286,7 +299,40 @@ public class Paciente extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelRound4.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        panelRound4.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
+
+        panelRound7.setBackground(new java.awt.Color(20, 36, 57));
+        panelRound7.setRoundBottomLeft(10);
+        panelRound7.setRoundBottomRight(10);
+        panelRound7.setRoundTopLeft(10);
+        panelRound7.setRoundTopRight(10);
+
+        jLabel9.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Actualizar");
+
+        javax.swing.GroupLayout panelRound7Layout = new javax.swing.GroupLayout(panelRound7);
+        panelRound7.setLayout(panelRound7Layout);
+        panelRound7Layout.setHorizontalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelRound7Layout.setVerticalGroup(
+            panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(panelRound7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelRound4.add(panelRound7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 100, 30));
 
         panelRound1.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 400, 390));
 
@@ -366,6 +412,20 @@ public class Paciente extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_panelRound6MouseClicked
 
+    private void panelRound5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound5MouseClicked
+        String id = tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 0).toString();
+        
+        
+        JOptionPane.showMessageDialog(null, "Data is: "+id);
+        
+        citas frame = new citas(id);
+        frame.setVisible(true);
+    }//GEN-LAST:event_panelRound5MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -412,6 +472,7 @@ public class Paciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound2;
@@ -419,6 +480,7 @@ public class Paciente extends javax.swing.JFrame {
     private control_clinica.PanelRound panelRound4;
     private control_clinica.PanelRound panelRound5;
     private control_clinica.PanelRound panelRound6;
+    private control_clinica.PanelRound panelRound7;
     private javax.swing.JTable tbPaciente;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNom;
