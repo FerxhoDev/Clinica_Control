@@ -423,7 +423,10 @@ public class Paciente extends javax.swing.JFrame {
     }//GEN-LAST:event_panelRound5MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        String id = tbPaciente.getValueAt(tbPaciente.getSelectedRow(), 0).toString();
         
+        citas frame = new citas(id);
+        frame.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     /**

@@ -8,6 +8,9 @@ import com.mysql.cj.xdevapi.Statement;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -60,8 +64,36 @@ public class Container extends javax.swing.JFrame {
         
         cchart();
         paintDashBoard();
+        
+        tbcitas.addMouseListener(new MouseAdapter(){
+    public void mousePressed(MouseEvent Mouse_evt){
+        JTable table = (JTable) Mouse_evt.getSource();
+        Point point = Mouse_evt.getPoint();
+        int row = table.rowAtPoint(point);
+        // variable ID
+        String idp = tbcitas.getValueAt(tbcitas.getSelectedRow(), 0).toString();
+        if(Mouse_evt.getClickCount() == 1){
+            txtNom.setText(tbcitas.getValueAt(tbcitas.getSelectedRow(), 1).toString());
+            txtFecha.setText(tbcitas.getValueAt(tbcitas.getSelectedRow(), 2).toString());
+            txtHora.setText(tbcitas.getValueAt(tbcitas.getSelectedRow(), 3).toString());
+        }
+        
+    }            
+        }); 
     }
     
+    public void consulta (String consulta){
+        Connection cn = null;
+        Statement sql;
+        PreparedStatement pst = null;
+        try{
+            cn = conectar();
+            pst = cn.prepareStatement(consulta);
+            pst.executeUpdate();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, con la consulta :)" +e.toString());
+        }
+    }
     public Connection conectar(){
     
         Connection con = null;
@@ -263,6 +295,17 @@ public class Container extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbcitas = new javax.swing.JTable();
+        panelRound9 = new control_clinica.PanelRound();
+        txtHora = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        panelRound12 = new control_clinica.PanelRound();
+        jLabel22 = new javax.swing.JLabel();
+        panelRound13 = new control_clinica.PanelRound();
+        jLabel23 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -516,7 +559,110 @@ public class Container extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbcitas);
 
-        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 840, 220));
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 610, 240));
+
+        panelRound9.setBackground(new java.awt.Color(61, 130, 219));
+        panelRound9.setRoundBottomLeft(30);
+        panelRound9.setRoundBottomRight(30);
+        panelRound9.setRoundTopLeft(30);
+        panelRound9.setRoundTopRight(30);
+        panelRound9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound9.add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 206, 32));
+        panelRound9.add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 260, 32));
+        panelRound9.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 206, 32));
+
+        jLabel10.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(237, 245, 255));
+        jLabel10.setText("Nombre");
+        panelRound9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(237, 245, 255));
+        jLabel12.setText("Fecha");
+        panelRound9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(237, 245, 255));
+        jLabel18.setText("Teléfono");
+        panelRound9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        panelRound12.setBackground(new java.awt.Color(20, 36, 57));
+        panelRound12.setRoundBottomLeft(10);
+        panelRound12.setRoundBottomRight(10);
+        panelRound12.setRoundTopLeft(10);
+        panelRound12.setRoundTopRight(10);
+        panelRound12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound12MouseClicked(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Eliminar");
+
+        javax.swing.GroupLayout panelRound12Layout = new javax.swing.GroupLayout(panelRound12);
+        panelRound12.setLayout(panelRound12Layout);
+        panelRound12Layout.setHorizontalGroup(
+            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+            .addGroup(panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound12Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel22)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelRound12Layout.setVerticalGroup(
+            panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(panelRound12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound12Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel22)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelRound9.add(panelRound12, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 287, 90, 30));
+
+        panelRound13.setBackground(new java.awt.Color(20, 36, 57));
+        panelRound13.setRoundBottomLeft(10);
+        panelRound13.setRoundBottomRight(10);
+        panelRound13.setRoundTopLeft(10);
+        panelRound13.setRoundTopRight(10);
+        panelRound13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRound13MouseClicked(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Dubai Medium", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Actualizar");
+
+        javax.swing.GroupLayout panelRound13Layout = new javax.swing.GroupLayout(panelRound13);
+        panelRound13.setLayout(panelRound13Layout);
+        panelRound13Layout.setHorizontalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound13Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel23)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        panelRound13Layout.setVerticalGroup(
+            panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(panelRound13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRound13Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel23)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelRound9.add(panelRound13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 100, 30));
+
+        jPanel5.add(panelRound9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 340, 350));
 
         Panelpestañas.addTab("Cita", jPanel5);
 
@@ -771,19 +917,15 @@ public class Container extends javax.swing.JFrame {
         // build tbCitas
         
         DefaultTableModel md = new DefaultTableModel();
-        md.addColumn("id");
-        md.addColumn("Nombre");
-        md.addColumn("Dirección");
-        md.addColumn("Teléfono");
-        tbcitas.setModel(md);
+       
         
-        ResultSet rs = listartab("SELECT c.motivo, c.fecha, c.hora, p.Nombre FROM cita c LEFT JOIN paciente p ON c.paciente_id = p.ID_paciente;");
+        ResultSet rs = listartab("SELECT c.id, c.motivo, c.fecha, c.hora, p.Nombre FROM cita c LEFT JOIN paciente p ON c.paciente_id = p.ID_paciente;");
         
-        md.setColumnIdentifiers(new Object[]{"Motivo", "Nombre", "Fecha", "Hora"});
+        md.setColumnIdentifiers(new Object[]{"id", "Motivo", "Nombre", "Fecha", "Hora"});
         
         try{
             while(rs.next()){
-                md.addRow(new Object[] {rs.getString("motivo"), rs.getString("Nombre"), rs.getString("fecha"), rs.getString("hora"), }); 
+                md.addRow(new Object[] {rs.getString("id"),rs.getString("motivo"), rs.getString("Nombre"), rs.getString("fecha"), rs.getString("hora"), }); 
                 tbcitas.setModel(md);
             }           
         }catch(Exception e){
@@ -878,6 +1020,25 @@ public class Container extends javax.swing.JFrame {
         showAdd.setVisible(true);
     }//GEN-LAST:event_panelRound10MouseClicked
 
+    private void panelRound12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound12MouseClicked
+        String id = tbcitas.getValueAt(tbcitas.getSelectedRow(), 0).toString();
+        String [] botones = {"Si", "No"};
+
+        int op = JOptionPane.showOptionDialog(this, "Quieres eliminar el registro?","",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,botones, botones[0]);
+
+        if (op == 0) {
+            consulta("delete from cita where id = "+id+"");
+            JOptionPane.showMessageDialog(null, "Cita eliminada");
+        }else if (op == 1){
+            JOptionPane.showMessageDialog(null, "No se realizaron cambios");
+        }
+
+    }//GEN-LAST:event_panelRound12MouseClicked
+
+    private void panelRound13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelRound13MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -926,15 +1087,20 @@ public class Container extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -968,6 +1134,8 @@ public class Container extends javax.swing.JFrame {
     private control_clinica.PanelRound panChart;
     private control_clinica.PanelRound panelRound1;
     private control_clinica.PanelRound panelRound10;
+    private control_clinica.PanelRound panelRound12;
+    private control_clinica.PanelRound panelRound13;
     private control_clinica.PanelRound panelRound2;
     private control_clinica.PanelRound panelRound3;
     private control_clinica.PanelRound panelRound4;
@@ -975,6 +1143,10 @@ public class Container extends javax.swing.JFrame {
     private control_clinica.PanelRound panelRound6;
     private control_clinica.PanelRound panelRound7;
     private control_clinica.PanelRound panelRound8;
+    private control_clinica.PanelRound panelRound9;
     private javax.swing.JTable tbcitas;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtNom;
     // End of variables declaration//GEN-END:variables
 }
